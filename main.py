@@ -1,20 +1,20 @@
-"""Expense tracker starter: menu only; other features are TODO."""
+"""Run the expense tracker with python main.py."""
+from expenses import add_expense, print_expenses
 
 def main():
+    records = []
+    print("Expenses stay in memory until you quit.")
     while True:
-        print("\nExpense Tracker")
-        print("1. Add expense")
-        print("2. Print expenses")
-        print("3. Filter expenses")
-        print("4. Save JSON")
-        print("5. Load JSON")
-        print("6. Export CSV")
-        print("7. Quit")
-        choice = input("Choose: ")
-        if choice == "7":
+        print("\n1. Add expense     2. Print expenses     3. Filter expenses")
+        print("4. Save JSON       5. Load JSON          6. Export CSV     7. Quit")
+        choice = input("Choose: ").strip()
+        if choice == "1":
+            add_expense(records)
+        elif choice == "2":
+            print_expenses(records)
+        elif choice == "7":
             break
         else:
-            print("TODO: this feature is not implemented.")
-
+            print("Choose 1, 2, or 7. Options 3 through 6 are planned.")
 if __name__ == "__main__":
     main()
