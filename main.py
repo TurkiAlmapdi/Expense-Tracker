@@ -1,6 +1,5 @@
-"""Run the expense tracker with python main.py."""
 from expenses import add_expense, print_expenses
-
+from filters import filter_expenses
 def main():
     records = []
     print("Expenses stay in memory until you quit.")
@@ -12,9 +11,10 @@ def main():
             add_expense(records)
         elif choice == "2":
             print_expenses(records)
+        elif choice == "3":
+            filter_expenses(records)
         elif choice == "7":
             break
         else:
-            print("Choose 1, 2, or 7. Options 3 through 6 are planned.")
-if __name__ == "__main__":
-    main()
+            print("Options 4 through 6 are unfinished. Choose 1, 2, 3, or 7.")
+if __name__ == "__main__": main()
