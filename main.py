@@ -1,20 +1,20 @@
 from expenses import add_expense, print_expenses
 from filters import filter_expenses
+from storage import save_expenses, load_expenses
 def main():
     records = []
-    print("Expenses stay in memory until you quit.")
     while True:
-        print("\n1. Add expense     2. Print expenses     3. Filter expenses")
-        print("4. Save JSON       5. Load JSON          6. Export CSV     7. Quit")
+        print("\n1 Add | 2 Print | 3 Filter | 4 Save | 5 Load | 6 CSV | 7 Quit")
         choice = input("Choose: ").strip()
-        if choice == "1":
-            add_expense(records)
-        elif choice == "2":
-            print_expenses(records)
-        elif choice == "3":
-            filter_expenses(records)
-        elif choice == "7":
-            break
-        else:
-            print("Options 4 through 6 are unfinished. Choose 1, 2, 3, or 7.")
+        try:
+            if choice == "1": add_expense(records)
+            elif choice == "2": print_expenses(records)
+            elif choice == "3": filter_expenses(records)
+            elif choice == "4": save_expenses(records)
+            elif choice == "5": records = load_expenses(records)
+            elif choice == "6": print("CSV export is unfinished.")
+            elif choice == "7":
+                if input("Quit? Save your changes first. y/n: ") == "y": break
+            else: print("Choose a number from 1 to 7.")
+        except (OSError, ValueError) as error: print("Error:", error)
 if __name__ == "__main__": main()
