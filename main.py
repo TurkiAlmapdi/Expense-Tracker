@@ -17,4 +17,10 @@ def main():
             elif choice == "7": break
             else: print("Choose a number from 1 to 7.")
         except (OSError, ValueError) as error: print("Error:", error)
-if __name__ == "__main__": main()
+if __name__ == "__main__":
+    import sys
+    if "--console" in sys.argv:
+        main()
+    else:
+        from interface import run
+        run()
